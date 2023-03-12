@@ -267,7 +267,6 @@ Others.TextSize = 14.000
 Others.TextStrokeTransparency = 0.000
 Others.TextWrapped = true
 Others.MouseButton1Down:Connect(function()
-	game.ReplicatedStorage.refreshbox:FireServer()
 	headtutorial.Visible = true
 	head.Visible = true
 	GuisColors.Visible = true
