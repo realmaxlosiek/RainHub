@@ -29,7 +29,6 @@ local Ui_Corner8 = Instance.new("UICorner")
 local part = Instance.new("Part")
 local Misc = Instance.new("TextButton")
 local Others = Instance.new("TextButton")
-local Arrow = Instance.new("TextButton")
 local orange_esp = Instance.new("TextButton")
 local hightlight3 = Instance.new("Highlight")
 local Color_Green = Instance.new("TextButton")
@@ -223,36 +222,6 @@ Misc.MouseLeave:Connect(function()
 	Misc.BorderSizePixel = 0
 end)
 
-
-Arrow.Name = "Arrow"
-Arrow.Parent = Black_Frame
-Arrow.BackgroundColor3 = Color3.fromRGB(140, 140, 140)
-Arrow.Position = UDim2.new(0.997, 0,0.006, 0)
-Arrow.Size = UDim2.new(0, 63,0, 50)
-Arrow.Font = Enum.Font.Highway
-Arrow.Text = ">"
-Arrow.TextColor3 = Color3.fromRGB(255, 255, 255)
-Arrow.TextScaled = true
-Arrow.TextSize = 14.000
-Arrow.TextStrokeTransparency = 0.000
-Arrow.TextWrapped = true
-Arrow.MouseButton1Up:Connect(function()
-	Black_Frame:TweenSize(UDim2.new(0, 164,0, 399)) 
-	Others:TweenSize(UDim2.new(0, 131,0, 50))
-	Misc:TweenSize(UDim2.new(0, 131,0, 50))
-end)
-Arrow.MouseButton1Down:Connect(function()
-	Black_Frame:TweenSize(UDim2.new(0, 21,0, 399)) 
-	Others:TweenSize(UDim2.new(0, 3,0, 50))
-	Misc:TweenSize(UDim2.new(0, 3,0, 50))
-end)
-Arrow.MouseEnter:Connect(function()
-	Arrow.BorderSizePixel = 3
-	Arrow.BorderColor3 = Color3.fromRGB(255, 255, 255)
-end)
-Arrow.MouseLeave:Connect(function()
-	Arrow.BorderSizePixel = 0
-end)
 
 Others.Name = "Others"
 Others.Parent = Black_Frame
@@ -859,6 +828,14 @@ TouchInterests.MouseButton1Down:Connect(function()
 	Speebutton.Visible = false
 	Color_Normal.Visible = false
 end)
+TouchInterests.MouseEnter:Connect(function()
+	Misc.BorderSizePixel = 3
+	Misc.BorderColor3 = Color3.fromRGB(255, 255, 255)
+end)
+TouchInterests.MouseLeave:Connect(function()
+	Misc.BorderSizePixel = 0
+end)
+
 
 --Key
 
@@ -973,7 +950,7 @@ Blocks.TextSize = 14.000
 Blocks.TextWrapped = true
 Blocks.Visible = false
 Blocks.MouseButton1Down:Connect(function()
-	for _, v in pairs(game:GetService("Workspace").Block1:GetChildren()) do
+	for _, v in pairs(game:GetService("Workspace"):WaitForChild("Block1"):GetChildren()) do
 		if v:IsA("Part") then
 			firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, v, 0)
 		end
